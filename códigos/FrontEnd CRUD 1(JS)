@@ -1,0 +1,56 @@
+document.getElementById('userForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value;
+    const cpf = document.getElementById('cpf').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const endereco = document.getElementById('endereco').value;
+    const senha = document.getElementById('senha').value;
+
+    addUser(nome, cpf, email, telefone, endereco, senha);
+    clearForm();
+});
+
+function addUser(nome, cpf, email, telefone, endereco, senha) {
+    const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    newRow.insertCell(0).appendChild(document.createTextNode(nome));
+    newRow.insertCell(1).appendChild(document.createTextNode(cpf));
+    newRow.insertCell(2).appendChild(document.createTextNode(email));
+    newRow.insertCell(3).appendChild(document.createTextNode(telefone));
+    newRow.insertCell(4).appendChild(document.createTextNode(endereco));
+    const actionsCell = newRow.insertCell(5);
+
+    const editButton = document.createElement('button');
+    editButton.innerText = 'Editar';
+    editButton.onclick = function() { editUser(this); };
+    actionsCell.appendChild(editButton);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Excluir';
+    deleteButton.onclick = function() { deleteUser(this); };
+    actionsCell.appendChild(deleteButton);
+}
+
+function clearForm() {
+    document.getElementById('userForm').reset();
+}
+
+function editUser(button) {
+    const row = button.parentNode.parentNode;
+    document.getElementById('nome').value = row.cells[0].innerText;
+    document.getElementById('cpf').value = row.cells[1].innerText;
+    document.getElementById('email').value = row.cells[2].innerText;
+    document.getElementById('telefone').value = row.cells[3].innerText;
+    document.getElementById('endereco').value = row.cells[4].innerText;
+    document.getElementById('senha').value = ''; // Senha não deve ser exibida
+
+    row.parentNode.removeChild(row);
+}
+
+function deleteUser(button) {
+    const row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+}
