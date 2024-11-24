@@ -1,1 +1,1 @@
-Diretório criado para arquivos dos trabalhos de Engenharia de Sofware.
+Repositório criado para arquivos dos trabalhos de Engenharia de Software.
