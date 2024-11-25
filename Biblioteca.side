@@ -1,0 +1,630 @@
+{
+  "id": "0cc42f72-0902-4fd7-bfb8-d9e3c2a49d40",
+  "version": "2.0",
+  "name": "Biblioteca",
+  "url": "http://127.0.0.1:5500",
+  "tests": [{
+    "id": "3f361a03-a30c-44d9-bbe2-fda1e21483ed",
+    "name": "Biblioteca_TESTE",
+    "commands": [{
+      "id": "cbb5e90a-0f25-4f72-8d14-23a5b0ae4f12",
+      "comment": "",
+      "command": "open",
+      "target": "/CRUD%201%20e%202/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5ac5e8ed-eebe-4a0a-b459-8c8d861333b2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "223c04b8-a325-4c9e-b5fa-f41e0158de9a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cadastrar Usuário",
+      "targets": [
+        ["linkText=Cadastrar Usuário", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cadastrar Usuário')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"showPage('cadastrarUsuario')\"]", "xpath:attributes"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0);')])[2]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cadastrar Usuário')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "638f23ab-b2e0-4085-acde-54d13d2649e7",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomeUsuario",
+      "targets": [
+        ["id=nomeUsuario", "id"],
+        ["name=nome", "name"],
+        ["css=#nomeUsuario", "css:finder"],
+        ["xpath=//input[@id='nomeUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee799595-ec9e-42bb-b5a0-d5f9aee4556a",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomeUsuario",
+      "targets": [
+        ["id=nomeUsuario", "id"],
+        ["name=nome", "name"],
+        ["css=#nomeUsuario", "css:finder"],
+        ["xpath=//input[@id='nomeUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Leonardo Coura de Oliveira"
+    }, {
+      "id": "31012779-7de5-4b46-a946-a84774d16a58",
+      "comment": "",
+      "command": "click",
+      "target": "id=cpfUsuario",
+      "targets": [
+        ["id=cpfUsuario", "id"],
+        ["name=cpf", "name"],
+        ["css=#cpfUsuario", "css:finder"],
+        ["xpath=//input[@id='cpfUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f2a0e00-7ccf-4f35-9bf5-b919038c730d",
+      "comment": "",
+      "command": "type",
+      "target": "id=cpfUsuario",
+      "targets": [
+        ["id=cpfUsuario", "id"],
+        ["name=cpf", "name"],
+        ["css=#cpfUsuario", "css:finder"],
+        ["xpath=//input[@id='cpfUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "425.322.578-06"
+    }, {
+      "id": "3412559e-c1b1-4297-a7ff-05fedb0e1bbf",
+      "comment": "",
+      "command": "click",
+      "target": "id=emailUsuario",
+      "targets": [
+        ["id=emailUsuario", "id"],
+        ["name=email", "name"],
+        ["css=#emailUsuario", "css:finder"],
+        ["xpath=//input[@id='emailUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ea326c9-051c-4f01-8e3d-66252530a6f5",
+      "comment": "",
+      "command": "type",
+      "target": "id=emailUsuario",
+      "targets": [
+        ["id=emailUsuario", "id"],
+        ["name=email", "name"],
+        ["css=#emailUsuario", "css:finder"],
+        ["xpath=//input[@id='emailUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "guicsmpaio@gmail.com"
+    }, {
+      "id": "6d3dacba-d669-4de5-b5a1-e44594ebfbd5",
+      "comment": "",
+      "command": "click",
+      "target": "id=telefoneUsuario",
+      "targets": [
+        ["id=telefoneUsuario", "id"],
+        ["name=telefone", "name"],
+        ["css=#telefoneUsuario", "css:finder"],
+        ["xpath=//input[@id='telefoneUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb900fb7-5adb-411b-bb5a-bb928ddf498d",
+      "comment": "",
+      "command": "type",
+      "target": "id=telefoneUsuario",
+      "targets": [
+        ["id=telefoneUsuario", "id"],
+        ["name=telefone", "name"],
+        ["css=#telefoneUsuario", "css:finder"],
+        ["xpath=//input[@id='telefoneUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "12 98317-4086"
+    }, {
+      "id": "d5d3cae7-b876-4c26-bbbe-531342e8ed25",
+      "comment": "",
+      "command": "click",
+      "target": "id=enderecoUsuario",
+      "targets": [
+        ["id=enderecoUsuario", "id"],
+        ["name=endereco", "name"],
+        ["css=#enderecoUsuario", "css:finder"],
+        ["xpath=//input[@id='enderecoUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e73540e-e3b2-4f6b-9481-f91d3ce3ba8c",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoUsuario",
+      "targets": [
+        ["id=enderecoUsuario", "id"],
+        ["name=endereco", "name"],
+        ["css=#enderecoUsuario", "css:finder"],
+        ["xpath=//input[@id='enderecoUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "Rua Dom Bosco, 273 - Centro, Itajubá - MG"
+    }, {
+      "id": "dc7e47a9-eace-4a11-a093-179286807752",
+      "comment": "",
+      "command": "click",
+      "target": "id=senhaUsuario",
+      "targets": [
+        ["id=senhaUsuario", "id"],
+        ["name=senha", "name"],
+        ["css=#senhaUsuario", "css:finder"],
+        ["xpath=//input[@id='senhaUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b89894b5-3e08-4d83-b36e-3b16d20efdc9",
+      "comment": "",
+      "command": "type",
+      "target": "id=senhaUsuario",
+      "targets": [
+        ["id=senhaUsuario", "id"],
+        ["name=senha", "name"],
+        ["css=#senhaUsuario", "css:finder"],
+        ["xpath=//input[@id='senhaUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "122345555"
+    }, {
+      "id": "36a3a13f-1dc7-4b0d-8ae9-3b69b4f491a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(7)",
+      "targets": [
+        ["css=button:nth-child(7)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Cadastrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1cb8e36a-c25a-4188-bd98-575dac5758fb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Usuários Cadastrados",
+      "targets": [
+        ["linkText=Usuários Cadastrados", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Usuários Cadastrados')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"showPage('usuarios')\"]", "xpath:attributes"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0);')])[3]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Usuários Cadastrados')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb6cd7a0-bf17-4a2c-b39a-59d4d803033f",
+      "comment": "",
+      "command": "click",
+      "target": "css=#userTable button:nth-child(1)",
+      "targets": [
+        ["css=#userTable button:nth-child(1)", "css:finder"],
+        ["xpath=//button[@onclick=\"editUser('425.322.578-06')\"]", "xpath:attributes"],
+        ["xpath=//table[@id='userTable']/tbody/tr/td[6]/button", "xpath:idRelative"],
+        ["xpath=//td[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Editar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "829bc2fb-ab62-4709-ade1-b05d35397575",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomeUsuario",
+      "targets": [
+        ["id=nomeUsuario", "id"],
+        ["name=nome", "name"],
+        ["css=#nomeUsuario", "css:finder"],
+        ["xpath=//input[@id='nomeUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4acf6753-90b8-4d80-8bc4-d8e28ca95c6d",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomeUsuario",
+      "targets": [
+        ["id=nomeUsuario", "id"],
+        ["name=nome", "name"],
+        ["css=#nomeUsuario", "css:finder"],
+        ["xpath=//input[@id='nomeUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "772307dc-bb63-469a-a786-1ff0fc2347b0",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=nomeUsuario",
+      "targets": [
+        ["id=nomeUsuario", "id"],
+        ["name=nome", "name"],
+        ["css=#nomeUsuario", "css:finder"],
+        ["xpath=//input[@id='nomeUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "25b1daa0-cd80-42ad-b258-c41fa5c0832c",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomeUsuario",
+      "targets": [
+        ["id=nomeUsuario", "id"],
+        ["name=nome", "name"],
+        ["css=#nomeUsuario", "css:finder"],
+        ["xpath=//input[@id='nomeUsuario']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Leonardo Coura"
+    }, {
+      "id": "cedd8b7e-5819-427c-8d13-f2ffdf708fe1",
+      "comment": "",
+      "command": "click",
+      "target": "id=userForm",
+      "targets": [
+        ["id=userForm", "id"],
+        ["css=#userForm", "css:finder"],
+        ["xpath=//form[@id='userForm']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastrarUsuario']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c4bee963-0d67-4d5f-883f-064ed16d7425",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(7)",
+      "targets": [
+        ["css=button:nth-child(7)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Cadastrar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e1fbf2d-8ae8-4040-bf34-19682c066c3d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Usuários Cadastrados",
+      "targets": [
+        ["linkText=Usuários Cadastrados", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Usuários Cadastrados')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"showPage('usuarios')\"]", "xpath:attributes"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0);')])[3]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Usuários Cadastrados')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cfca0322-eb4e-4610-893e-0453d44d99ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=#userTable button:nth-child(2)",
+      "targets": [
+        ["css=#userTable button:nth-child(2)", "css:finder"],
+        ["xpath=//button[@onclick=\"deleteUser('425.322.578-06')\"]", "xpath:attributes"],
+        ["xpath=//table[@id='userTable']/tbody/tr/td[6]/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Excluir')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7291093f-b5a9-4ffe-bd41-e741d2049dd2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cadastrar Livro",
+      "targets": [
+        ["linkText=Cadastrar Livro", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cadastrar Livro')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"showPage('cadastrarLivro')\"]", "xpath:attributes"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0);')])[4]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cadastrar Livro')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7b6c6bd4-d95e-42d5-8b2e-8139d8e56c4d",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomeLivro",
+      "targets": [
+        ["id=nomeLivro", "id"],
+        ["css=#nomeLivro", "css:finder"],
+        ["xpath=//input[@id='nomeLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd66f33d-6ca1-48c3-b6f5-40ce787a1541",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomeLivro",
+      "targets": [
+        ["id=nomeLivro", "id"],
+        ["css=#nomeLivro", "css:finder"],
+        ["xpath=//input[@id='nomeLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div/input", "xpath:position"]
+      ],
+      "value": "Dom Casmurro"
+    }, {
+      "id": "9b43be6c-f8d7-4262-93a8-a359bc997aca",
+      "comment": "",
+      "command": "click",
+      "target": "id=autorLivro",
+      "targets": [
+        ["id=autorLivro", "id"],
+        ["name=autor", "name"],
+        ["css=#autorLivro", "css:finder"],
+        ["xpath=//input[@id='autorLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "13344031-86b1-4907-8b9e-917abb7966ee",
+      "comment": "",
+      "command": "type",
+      "target": "id=autorLivro",
+      "targets": [
+        ["id=autorLivro", "id"],
+        ["name=autor", "name"],
+        ["css=#autorLivro", "css:finder"],
+        ["xpath=//input[@id='autorLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[2]/input", "xpath:position"]
+      ],
+      "value": "Machado de Assis"
+    }, {
+      "id": "233695a4-b220-418b-b522-c4833998faa4",
+      "comment": "",
+      "command": "click",
+      "target": "id=anoLivro",
+      "targets": [
+        ["id=anoLivro", "id"],
+        ["name=ano", "name"],
+        ["css=#anoLivro", "css:finder"],
+        ["xpath=//input[@id='anoLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc4ae23e-c462-4c5a-bd1a-3a5a3b321a53",
+      "comment": "",
+      "command": "type",
+      "target": "id=anoLivro",
+      "targets": [
+        ["id=anoLivro", "id"],
+        ["name=ano", "name"],
+        ["css=#anoLivro", "css:finder"],
+        ["xpath=//input[@id='anoLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[3]/input", "xpath:position"]
+      ],
+      "value": "1899"
+    }, {
+      "id": "dcccc74a-e4d6-4cd1-9400-6abcc78a0d98",
+      "comment": "",
+      "command": "click",
+      "target": "id=generoLivro",
+      "targets": [
+        ["id=generoLivro", "id"],
+        ["name=genero", "name"],
+        ["css=#generoLivro", "css:finder"],
+        ["xpath=//input[@id='generoLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c37a513a-8d10-4ee2-8a87-242da8e045c4",
+      "comment": "",
+      "command": "type",
+      "target": "id=generoLivro",
+      "targets": [
+        ["id=generoLivro", "id"],
+        ["name=genero", "name"],
+        ["css=#generoLivro", "css:finder"],
+        ["xpath=//input[@id='generoLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[4]/input", "xpath:position"]
+      ],
+      "value": "Romance"
+    }, {
+      "id": "322ac7f0-f2fe-48a1-b3f6-5e4aa9de0e5e",
+      "comment": "",
+      "command": "click",
+      "target": "id=quantidadeLivro",
+      "targets": [
+        ["id=quantidadeLivro", "id"],
+        ["name=quantidade", "name"],
+        ["css=#quantidadeLivro", "css:finder"],
+        ["xpath=//input[@id='quantidadeLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "53e2d41e-720d-4d9a-b8e9-23941bf9a560",
+      "comment": "",
+      "command": "type",
+      "target": "id=quantidadeLivro",
+      "targets": [
+        ["id=quantidadeLivro", "id"],
+        ["name=quantidade", "name"],
+        ["css=#quantidadeLivro", "css:finder"],
+        ["xpath=//input[@id='quantidadeLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[5]/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "32c3c9e7-5962-4141-9d72-da1847af84cc",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(6)",
+      "targets": [
+        ["css=button:nth-child(6)", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/button", "xpath:idRelative"],
+        ["xpath=//div[4]/form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ef47c1e-b9ee-4471-a43a-568b6356b332",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Livros Cadastrados",
+      "targets": [
+        ["linkText=Livros Cadastrados", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Livros Cadastrados')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"showPage('livros')\"]", "xpath:attributes"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0);')])[5]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Livros Cadastrados')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed62f021-1a85-4a03-8026-6905aaa3fb4a",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(1)",
+      "targets": [
+        ["css=button:nth-child(1)", "css:finder"],
+        ["xpath=//button[@onclick=\"editBook('Dom Casmurro')\"]", "xpath:attributes"],
+        ["xpath=//table[@id='bookTable']/tbody/tr/td[6]/button", "xpath:idRelative"],
+        ["xpath=//td[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Editar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6be0cb56-06e2-4434-92f8-aaa54c83853a",
+      "comment": "",
+      "command": "click",
+      "target": "id=anoLivro",
+      "targets": [
+        ["id=anoLivro", "id"],
+        ["name=ano", "name"],
+        ["css=#anoLivro", "css:finder"],
+        ["xpath=//input[@id='anoLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c38760bb-3997-4266-99c6-6870d98d626f",
+      "comment": "",
+      "command": "type",
+      "target": "id=anoLivro",
+      "targets": [
+        ["id=anoLivro", "id"],
+        ["name=ano", "name"],
+        ["css=#anoLivro", "css:finder"],
+        ["xpath=//input[@id='anoLivro']", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/div[3]/input", "xpath:position"]
+      ],
+      "value": "1898"
+    }, {
+      "id": "f2039b5c-d3e4-4437-859e-cc000064aec5",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(6)",
+      "targets": [
+        ["css=button:nth-child(6)", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='bookForm']/button", "xpath:idRelative"],
+        ["xpath=//div[4]/form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ac05e13-1431-4fd0-92bc-32faf21362ed",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Livros Cadastrados",
+      "targets": [
+        ["linkText=Livros Cadastrados", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Livros Cadastrados')]", "xpath:link"],
+        ["xpath=//a[@onclick=\"showPage('livros')\"]", "xpath:attributes"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0);')])[5]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Livros Cadastrados')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "85d44638-1048-4a87-9971-b83ce36244a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(2)",
+      "targets": [
+        ["css=button:nth-child(2)", "css:finder"],
+        ["xpath=//button[@onclick=\"deleteBook('Dom Casmurro')\"]", "xpath:attributes"],
+        ["xpath=//table[@id='bookTable']/tbody/tr/td[6]/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Excluir')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "83f55d56-f77c-4c63-975e-80e089bf8291",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["3f361a03-a30c-44d9-bbe2-fda1e21483ed"]
+  }],
+  "urls": ["http://127.0.0.1:5500/"],
+  "plugins": []
+}
