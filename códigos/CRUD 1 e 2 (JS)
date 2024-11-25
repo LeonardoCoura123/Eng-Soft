@@ -1,0 +1,201 @@
+// Função para exibir a página selecionada
+function showPage(pageId) {
+    // Seleciona todas as páginas
+    const pages = document.querySelectorAll('.page');
+
+    // Oculta todas as páginas
+    pages.forEach(page => page.classList.add('hidden'));
+
+    // Mostra a página selecionada
+    const selectedPage = document.getElementById(pageId);
+    if (selectedPage) {
+        selectedPage.classList.remove('hidden');
+    } else {
+        console.error(`Página com ID "${pageId}" não encontrada.`);
+    }
+}
+
+// Verificação para a inicialização da página inicial
+document.addEventListener('DOMContentLoaded', () => {
+    showPage('home'); // Exibe a página inicial ao carregar
+
+    // Carregar usuários e livros do localStorage ao carregar a página
+    loadUsers();
+    loadBooks();
+});
+
+// Função para carregar os usuários do localStorage
+function loadUsers() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+    userTable.innerHTML = ''; // Limpar a tabela antes de adicionar os dados
+
+    users.forEach(user => {
+        const row = userTable.insertRow();
+        row.innerHTML = `
+            <td>${user.nome}</td>
+            <td>${user.cpf}</td>
+            <td>${user.email}</td>
+            <td>${user.telefone}</td>
+            <td>${user.endereco}</td>
+            <td>
+                <button onclick="editUser('${user.cpf}')">Editar</button>
+                <button onclick="deleteUser('${user.cpf}')">Excluir</button>
+            </td>
+        `;
+    });
+}
+
+// Função para carregar os livros do localStorage
+function loadBooks() {
+    const books = JSON.parse(localStorage.getItem('books')) || [];
+    const bookTable = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+    bookTable.innerHTML = ''; // Limpar a tabela antes de adicionar os dados
+
+    books.forEach(book => {
+        const row = bookTable.insertRow();
+        row.innerHTML = `
+            <td>${book.nome}</td>
+            <td>${book.autor}</td>
+            <td>${book.ano}</td>
+            <td>${book.genero}</td>
+            <td>${book.quantidade}</td>
+            <td>
+                <button onclick="editBook('${book.nome}')">Editar</button>
+                <button onclick="deleteBook('${book.nome}')">Excluir</button>
+            </td>
+        `;
+    });
+}
+
+// Função para cadastrar um novo usuário
+document.getElementById('userForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita o envio do formulário
+
+    const user = {
+        nome: document.getElementById('nomeUsuario').value,
+        cpf: document.getElementById('cpfUsuario').value,
+        email: document.getElementById('emailUsuario').value,
+        telefone: document.getElementById('telefoneUsuario').value,
+        endereco: document.getElementById('enderecoUsuario').value,
+        senha: document.getElementById('senhaUsuario').value
+    };
+
+    // Verifica se estamos editando ou criando um novo usuário
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const existingUserIndex = users.findIndex(u => u.cpf === user.cpf);
+
+    if (existingUserIndex > -1) {
+        // Atualiza o usuário existente
+        users[existingUserIndex] = user;
+    } else {
+        // Adiciona novo usuário
+        users.push(user);
+    }
+
+    // Salvar os usuários no localStorage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Limpar o formulário
+    document.getElementById('userForm').reset();
+
+
+    // Atualizar a lista de usuários
+    loadUsers();
+});
+
+// Função para cadastrar um novo livro
+document.getElementById('bookForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita o envio do formulário
+
+    const book = {
+        nome: document.getElementById('nomeLivro').value,
+        autor: document.getElementById('autorLivro').value,
+        ano: document.getElementById('anoLivro').value,
+        genero: document.getElementById('generoLivro').value,
+        quantidade: document.getElementById('quantidadeLivro').value
+    };
+
+    // Verifica se estamos editando ou criando um novo livro
+    const books = JSON.parse(localStorage.getItem('books')) || [];
+    const existingBookIndex = books.findIndex(b => b.nome === book.nome);
+
+    if (existingBookIndex > -1) {
+        // Atualiza o livro existente
+        books[existingBookIndex] = book;
+    } else {
+        // Adiciona novo livro
+        books.push(book);
+    }
+
+    // Salvar os livros no localStorage
+    localStorage.setItem('books', JSON.stringify(books));
+
+    // Limpar o formulário
+    document.getElementById('bookForm').reset();
+
+
+    // Atualizar a lista de livros
+    loadBooks();
+});
+
+// Função para editar um usuário
+function editUser(cpf) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.cpf === cpf);
+
+    if (user) {
+        // Preenche o formulário de cadastro com os dados do usuário
+        document.getElementById('nomeUsuario').value = user.nome;
+        document.getElementById('cpfUsuario').value = user.cpf;
+        document.getElementById('emailUsuario').value = user.email;
+        document.getElementById('telefoneUsuario').value = user.telefone;
+        document.getElementById('enderecoUsuario').value = user.endereco;
+        document.getElementById('senhaUsuario').value = user.senha;
+
+        // Exibe a página de cadastro de usuário para edição
+        showPage('cadastrarUsuario');
+    }
+}
+
+// Função para editar um livro
+function editBook(nome) {
+    const books = JSON.parse(localStorage.getItem('books')) || [];
+    const book = books.find(b => b.nome === nome);
+
+    if (book) {
+        // Preenche o formulário de cadastro com os dados do livro
+        document.getElementById('nomeLivro').value = book.nome;
+        document.getElementById('autorLivro').value = book.autor;
+        document.getElementById('anoLivro').value = book.ano;
+        document.getElementById('generoLivro').value = book.genero;
+        document.getElementById('quantidadeLivro').value = book.quantidade;
+
+        // Exibe a página de cadastro de livro para edição
+        showPage('cadastrarLivro');
+    }
+}
+
+// Função para excluir um usuário
+function deleteUser(cpf) {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    users = users.filter(user => user.cpf !== cpf); // Remove o usuário com o CPF informado
+
+    // Salvar os usuários atualizados no localStorage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Atualizar a lista de usuários
+    loadUsers();
+}
+
+// Função para excluir um livro
+function deleteBook(nome) {
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+    books = books.filter(book => book.nome !== nome); // Remove o livro com o nome informado
+
+    // Salvar os livros atualizados no localStorage
+    localStorage.setItem('books', JSON.stringify(books));
+
+    // Atualizar a lista de livros
+    loadBooks();
+}
