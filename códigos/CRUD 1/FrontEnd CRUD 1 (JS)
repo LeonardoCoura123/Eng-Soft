@@ -1,166 +1,113 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Função para alternar entre seções
-    function showSection(sectionId) {
-        // Esconder todas as seções
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.style.display = 'none';
-        });
-        // Mostrar a seção selecionada
-        document.getElementById(sectionId).style.display = 'block';
-    }
+// Variável para armazenar o usuário em edição
+let userToEdit = null;
 
-    // Manipulador de eventos para os links do menu lateral
-    document.querySelectorAll('.sidebar ul li a').forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetId = this.id.replace('link-', '');
-            showSection(targetId);
-        });
+// Função para exibir páginas específicas do dashboard
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.classList.remove('visible');
+        page.classList.add('hidden');
     });
 
-    // Mostrar a seção inicial (home)
-    showSection('home');
-
-    // Manipulador de eventos para o formulário de cadastro
-    document.getElementById('userForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const nome = document.getElementById('nome').value;
-        const cpf = document.getElementById('cpf').value;
-        const email = document.getElementById('email').value;
-        const telefone = document.getElementById('telefone').value;
-        const endereco = document.getElementById('endereco').value;
-        const senha = document.getElementById('senha').value;
-
-        addUser(nome, cpf, email, telefone, endereco, senha);
-        clearForm();
-        showSuccessMessage();
-    });
-
-    function addUser(nome, cpf, email, telefone, endereco, senha) {
-        const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
-        const newRow = table.insertRow();
-
-        newRow.insertCell(0).appendChild(document.createTextNode(nome));
-        newRow.insertCell(1).appendChild(document.createTextNode(cpf));
-        newRow.insertCell(2).appendChild(document.createTextNode(email));
-        newRow.insertCell(3).appendChild(document.createTextNode(telefone));
-        newRow.insertCell(4).appendChild(document.createTextNode(endereco));
-        const actionsCell = newRow.insertCell(5);
-        actionsCell.className = 'actions';
-
-        const editButton = document.createElement('button');
-        editButton.className = 'edit';
-        editButton.innerHTML = '<i class="fas fa-edit"></i>';
-        editButton.onclick = function() { editUser(this); };
-        actionsCell.appendChild(editButton);
-
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'delete';
-        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-        deleteButton.onclick = function() { deleteUser(this); };
-        actionsCell.appendChild(deleteButton);
+    const pageToShow = document.getElementById(pageId);
+    if (pageToShow) {
+        pageToShow.classList.remove('hidden');
+        pageToShow.classList.add('visible');
     }
+}
 
-    function clearForm() {
-        document.getElementById('userForm').reset();
-    }
+// Exibir a página inicial (Home) ao carregar
+window.onload = () => {
+    showPage('home');
+};
 
-    function editUser(button) {
-        const row = button.parentNode.parentNode;
-        document.getElementById('nome').value = row.cells[0].innerText;
-        document.getElementById('cpf').value = row.cells[1].innerText;
-        document.getElementById('email').value = row.cells[2].innerText;
-        document.getElementById('telefone').value = row.cells[3].innerText;
-        document.getElementById('endereco').value = row.cells[4].innerText;
-        document.getElementById('senha').value = ''; // Senha não deve ser preenchida
-        row.parentNode.removeChild(row);
-        showSection('cadastro'); // Redireciona para a seção de cadastro
-    }
+// Função para manipular o formulário de cadastro
+document.getElementById('userForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    function deleteUser(button) {
-        const row = button.parentNode.parentNode;
-        row.parentNode.removeChild(row);
-    }
+    const nome = document.getElementById('nome').value;
+    const cpf = document.getElementById('cpf').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const endereco = document.getElementById('endereco').value;
+    const senha = document.getElementById('senha').value;
 
-    function showSuccessMessage() {
+    // Se estamos editando um usuário, atualiza os dados
+    if (userToEdit) {
+        userToEdit.cells[0].innerText = nome;
+        userToEdit.cells[1].innerText = cpf;
+        userToEdit.cells[2].innerText = email;
+        userToEdit.cells[3].innerText = telefone;
+        userToEdit.cells[4].innerText = endereco;
+
+        // Resetando a variável de edição
+        userToEdit = null;
+    } else {
+        // Caso contrário, cria uma nova linha na tabela
+        const tableBody = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${nome}</td>
+            <td>${cpf}</td>
+            <td>${email}</td>
+            <td>${telefone}</td>
+            <td>${endereco}</td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Excluir</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+
+        // Exibe a mensagem de sucesso
         const successMessage = document.getElementById('successMessage');
-        successMessage.innerText = 'Usuário cadastrado com sucesso!';
-        successMessage.style.display = 'block';
+        successMessage.classList.remove('hidden');
+        
+        // Remove a mensagem de sucesso após 3 segundos
         setTimeout(() => {
-            successMessage.style.display = 'none';
+            successMessage.classList.add('hidden');
         }, 3000);
     }
+
+    // Limpar o formulário após o cadastro
+    document.getElementById('userForm').reset();
+
 });
 
-    // Manipulador de eventos para o formulário de cadastro
-    document.getElementById('userForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+// Função de interação com a tabela de usuários (editar/excluir)
+document.getElementById('userTable').addEventListener('click', function(event) {
+    const td = event.target;
 
-        const nome = document.getElementById('nome').value;
-        const cpf = document.getElementById('cpf').value;
-        const email = document.getElementById('email').value;
-        const telefone = document.getElementById('telefone').value;
-        const endereco = document.getElementById('endereco').value;
-        const senha = document.getElementById('senha').value;
+    if (td.classList.contains('edit')) {
+        const row = td.closest('tr');
+        const nome = row.cells[0].innerText;
+        const cpf = row.cells[1].innerText;
+        const email = row.cells[2].innerText;
+        const telefone = row.cells[3].innerText;
+        const endereco = row.cells[4].innerText;
 
-        addUser(nome, cpf, email, telefone, endereco, senha);
-        clearForm();
-        showSuccessMessage();
-    });
+        // Preenche o formulário de cadastro com os dados do usuário
+        document.getElementById('nome').value = nome;
+        document.getElementById('cpf').value = cpf;
+        document.getElementById('email').value = email;
+        document.getElementById('telefone').value = telefone;
+        document.getElementById('endereco').value = endereco;
 
-    function addUser(nome, cpf, email, telefone, endereco, senha) {
-        const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
-        const newRow = table.insertRow();
+        // Define que estamos editando esse usuário
+        userToEdit = row;
 
-        newRow.insertCell(0).appendChild(document.createTextNode(nome));
-        newRow.insertCell(1).appendChild(document.createTextNode(cpf));
-        newRow.insertCell(2).appendChild(document.createTextNode(email));
-        newRow.insertCell(3).appendChild(document.createTextNode(telefone));
-        newRow.insertCell(4).appendChild(document.createTextNode(endereco));
-        const actionsCell = newRow.insertCell(5);
-        actionsCell.className = 'actions';
-
-        const editButton = document.createElement('button');
-        editButton.className = 'edit';
-        editButton.innerHTML = '<i class="fas fa-edit"></i>';
-        editButton.onclick = function() { editUser(this); };
-        actionsCell.appendChild(editButton);
-
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'delete';
-        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-        deleteButton.onclick = function() { deleteUser(this); };
-        actionsCell.appendChild(deleteButton);
+        // Muda para a página de cadastro
+        showPage('cadastrar');
     }
 
-    function clearForm() {
-        document.getElementById('userForm').reset();
-    }
+    if (td.classList.contains('delete')) {
+        const row = td.closest('tr');
+        const nome = row.cells[0].innerText;
 
-    function editUser(button) {
-        const row = button.parentNode.parentNode;
-        document.getElementById('nome').value = row.cells[0].innerText;
-        document.getElementById('cpf').value = row.cells[1].innerText;
-        document.getElementById('email').value = row.cells[2].innerText;
-        document.getElementById('telefone').value = row.cells[3].innerText;
-        document.getElementById('endereco').value = row.cells[4].innerText;
-        document.getElementById('senha').value = ''; // Senha não deve ser preenchida
-        row.parentNode.removeChild(row);
-        showSection('cadastro'); // Redireciona para a seção de cadastro
-    }
-
-    function deleteUser(button) {
-        const row = button.parentNode.parentNode;
-        row.parentNode.removeChild(row);
-    }
-
-    function showSuccessMessage() {
-        const successMessage = document.getElementById('successMessage');
-        successMessage.innerText = 'Usuário cadastrado com sucesso!';
-        successMessage.style.display = 'block';
-        setTimeout(() => {
-            successMessage.style.display = 'none';
-        }, 3000);
+        if (confirm(`Deseja excluir o usuário ${nome}?`)) {
+            // Remove a linha da tabela
+            row.remove();
+        }
     }
 });
