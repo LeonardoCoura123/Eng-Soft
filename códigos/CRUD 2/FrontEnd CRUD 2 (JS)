@@ -10,6 +10,7 @@ document.getElementById('bookForm').addEventListener('submit', function(event) {
 
     addBook(nome, autor, ano, genero, codigo, quantidade);
     clearForm();
+    showPage('livros');  // Redireciona para a página de livros cadastrados após cadastro
 });
 
 function addBook(nome, autor, ano, genero, codigo, quantidade) {
@@ -24,13 +25,17 @@ function addBook(nome, autor, ano, genero, codigo, quantidade) {
     newRow.insertCell(5).appendChild(document.createTextNode(quantidade));
     const actionsCell = newRow.insertCell(6);
 
+    // Botão de editar
     const editButton = document.createElement('button');
     editButton.innerText = 'Editar';
+    editButton.classList.add('edit-button');
     editButton.onclick = function() { editBook(this); };
     actionsCell.appendChild(editButton);
 
+    // Botão de excluir
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Excluir';
+    deleteButton.classList.add('delete-button');
     deleteButton.onclick = function() { deleteBook(this); };
     actionsCell.appendChild(deleteButton);
 }
@@ -48,10 +53,25 @@ function editBook(button) {
     document.getElementById('codigo').value = row.cells[4].innerText;
     document.getElementById('quantidade').value = row.cells[5].innerText;
 
+    // Remove a linha da tabela para edição
     row.parentNode.removeChild(row);
 }
 
 function deleteBook(button) {
     const row = button.parentNode.parentNode;
     row.parentNode.removeChild(row);
+}
+
+// Função para alternar entre as abas
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');  // Seleciona todas as páginas
+    const pageToShow = document.getElementById(pageId);  // Seleciona a página a ser exibida
+
+    // Oculta todas as páginas
+    pages.forEach(function(page) {
+        page.classList.add('hidden');
+    });
+
+    // Exibe a página selecionada
+    pageToShow.classList.remove('hidden');
 }
