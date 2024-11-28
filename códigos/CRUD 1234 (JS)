@@ -1,0 +1,263 @@
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+let emprestimos = [];
+let multas = [];
+let usuarios = [];
+let livros = [];
+
+document.getElementById('emprestimo-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const emprestimo = {
+        id: document.getElementById('emprestimo-id').value,
+        nomeUsuario: document.getElementById('usuario-nome-emprestimo').value,
+        cpfUsuario: document.getElementById('usuario-cpf-emprestimo').value,
+        nomeLivro: document.getElementById('livro-nome-emprestimo').value,
+        dataEmprestimo: document.getElementById('data-emprestimo').value,
+        dataDevolucao: document.getElementById('data-devolucao').value,
+    };
+
+    emprestimos.push(emprestimo);
+    alert('Empréstimo cadastrado com sucesso!');
+    document.getElementById('emprestimo-form').reset();
+    atualizarListaEmprestimos();
+});
+
+document.getElementById('multa-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const multa = {
+        id: document.getElementById('multa-id').value,
+        nomeUsuario: document.getElementById('multa-usuario').value,
+        emprestimoId: document.getElementById('emprestimo-id-multa').value,
+        valor: document.getElementById('valor-multa').value,
+        data: document.getElementById('data-multa').value,
+    };
+
+    multas.push(multa);
+    alert('Multa cadastrada com sucesso!');
+    document.getElementById('multa-form').reset();
+    atualizarListaMultas();
+});
+
+document.getElementById('usuario-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const usuario = {
+        nome: document.getElementById('usuario-nome').value,
+        cpf: document.getElementById('usuario-cpf').value,
+        email: document.getElementById('usuario-email').value,
+        telefone: document.getElementById('usuario-telefone').value,
+        endereco: document.getElementById('usuario-endereco').value,
+        senha: document.getElementById('usuario-senha').value,
+    };
+
+    usuarios.push(usuario);
+    alert('Usuário cadastrado com sucesso!');
+    document.getElementById('usuario-form').reset();
+    atualizarListaUsuarios();
+});
+
+document.getElementById('livro-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const livro = {
+        nome: document.getElementById('livro-nome').value,
+        autor: document.getElementById('livro-autor').value,
+        ano: document.getElementById('livro-ano').value,
+        genero: document.getElementById('livro-genero').value,
+        codigo: document.getElementById('livro-codigo').value,
+        quantidade: document.getElementById('livro-quantidade').value,
+    };
+
+    livros.push(livro);
+    alert('Livro cadastrado com sucesso!');
+    document.getElementById('livro-form').reset();
+    atualizarListaLivros();
+});
+
+function atualizarListaEmprestimos() {
+    const tabelaEmprestimos = document.getElementById('emprestimos-table').getElementsByTagName('tbody')[0];
+    tabelaEmprestimos.innerHTML = '';
+
+    emprestimos.forEach((emprestimo, index) => {
+        const row = tabelaEmprestimos.insertRow();
+        row.insertCell(0).textContent = emprestimo.id;
+        row.insertCell(1).textContent = emprestimo.nomeUsuario;
+        row.insertCell(2).textContent = emprestimo.cpfUsuario;
+        row.insertCell(3).textContent = emprestimo.nomeLivro;
+        row.insertCell(4).textContent = emprestimo.dataEmprestimo;
+        row.insertCell(5).textContent = emprestimo.dataDevolucao;
+        const actionsCell = row.insertCell(6);
+        actionsCell.classList.add('actions');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar';
+        editButton.onclick = () => editarEmprestimo(index);
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Excluir';
+        deleteButton.classList.add('delete-button');
+        deleteButton.onclick = () => excluirEmprestimo(index);
+        actionsCell.appendChild(editButton);
+        actionsCell.appendChild(deleteButton);
+    });
+}
+
+function atualizarListaMultas() {
+    const tabelaMultas = document.getElementById('multas-table').getElementsByTagName('tbody')[0];
+    tabelaMultas.innerHTML = '';
+
+    multas.forEach((multa, index) => {
+        const row = tabelaMultas.insertRow();
+        row.insertCell(0).textContent = multa.id;
+        row.insertCell(1).textContent = multa.nomeUsuario;
+        row.insertCell(2).textContent = multa.emprestimoId;
+        row.insertCell(3).textContent = multa.valor;
+        row.insertCell(4).textContent = multa.data;
+        const actionsCell = row.insertCell(5);
+        actionsCell.classList.add('actions');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar';
+        editButton.onclick = () => editarMulta(index);
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Excluir';
+        deleteButton.classList.add('delete-button');
+        deleteButton.onclick = () => excluirMulta(index);
+        actionsCell.appendChild(editButton);
+        actionsCell.appendChild(deleteButton);
+    });
+}
+
+function atualizarListaUsuarios() {
+    const tabelaUsuarios = document.getElementById('usuarios-table').getElementsByTagName('tbody')[0];
+    tabelaUsuarios.innerHTML = '';
+
+    usuarios.forEach((usuario, index) => {
+        const row = tabelaUsuarios.insertRow();
+        row.insertCell(0).textContent = usuario.nome;
+        row.insertCell(1).textContent = usuario.cpf;
+        row.insertCell(2).textContent = usuario.email;
+        row.insertCell(3).textContent = usuario.telefone;
+        row.insertCell(4).textContent = usuario.endereco;
+        const actionsCell = row.insertCell(5);
+        actionsCell.classList.add('actions');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar';
+        editButton.onclick = () => editarUsuario(index);
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Excluir';
+        deleteButton.classList.add('delete-button');
+        deleteButton.onclick = () => excluirUsuario(index);
+        actionsCell.appendChild(editButton);
+        actionsCell.appendChild(deleteButton);
+    });
+}
+
+function atualizarListaLivros() {
+    const tabelaLivros = document.getElementById('livros-table').getElementsByTagName('tbody')[0];
+    tabelaLivros.innerHTML = '';
+
+    livros.forEach((livro, index) => {
+        const row = tabelaLivros.insertRow();
+        row.insertCell(0).textContent = livro.nome;
+        row.insertCell(1).textContent = livro.autor;
+        row.insertCell(2).textContent = livro.ano;
+        row.insertCell(3).textContent = livro.genero;
+        row.insertCell(4).textContent = livro.codigo;
+        row.insertCell(5).textContent = livro.quantidade;
+        const actionsCell = row.insertCell(6);
+        actionsCell.classList.add('actions');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar';
+        editButton.onclick = () => editarLivro(index);
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Excluir';
+        deleteButton.classList.add('delete-button');
+        deleteButton.onclick = () => excluirLivro(index);
+        actionsCell.appendChild(editButton);
+        actionsCell.appendChild(deleteButton);
+    });
+}
+
+function editarEmprestimo(index) {
+    const emprestimo = emprestimos[index];
+    document.getElementById('emprestimo-id').value = emprestimo.id;
+    document.getElementById('usuario-nome-emprestimo').value = emprestimo.nomeUsuario;
+    document.getElementById('usuario-cpf-emprestimo').value = emprestimo.cpfUsuario;
+    document.getElementById('livro-nome-emprestimo').value = emprestimo.nomeLivro;
+    document.getElementById('data-emprestimo').value = emprestimo.dataEmprestimo;
+    document.getElementById('data-devolucao').value = emprestimo.dataDevolucao;
+    emprestimos.splice(index, 1);
+    showSection('emprestimo-section');
+}
+
+function excluirEmprestimo(index) {
+    if (confirm('Você tem certeza que deseja excluir este empréstimo?')) {
+        emprestimos.splice(index, 1);
+        atualizarListaEmprestimos();
+    }
+}
+
+function editarMulta(index) {
+    const multa = multas[index];
+    document.getElementById('multa-id').value = multa.id;
+    document.getElementById('multa-usuario').value = multa.nomeUsuario;
+    document.getElementById('emprestimo-id-multa').value = multa.emprestimoId;
+    document.getElementById('valor-multa').value = multa.valor;
+    document.getElementById('data-multa').value = multa.data;
+    multas.splice(index, 1);
+    showSection('multa-section');
+}
+
+function excluirMulta(index) {
+    if (confirm('Você tem certeza que deseja excluir esta multa?')) {
+        multas.splice(index, 1);
+        atualizarListaMultas();
+    }
+}
+
+function editarUsuario(index) {
+    const usuario = usuarios[index];
+    document.getElementById('usuario-nome').value = usuario.nome;
+    document.getElementById('usuario-cpf').value = usuario.cpf;
+    document.getElementById('usuario-email').value = usuario.email;
+    document.getElementById('usuario-telefone').value = usuario.telefone;
+    document.getElementById('usuario-endereco').value = usuario.endereco;
+    document.getElementById('usuario-senha').value = usuario.senha;
+    usuarios.splice(index, 1);
+    showSection('usuario-section');
+}
+
+function excluirUsuario(index) {
+    if (confirm('Você tem certeza que deseja excluir este usuário?')) {
+        usuarios.splice(index, 1);
+        atualizarListaUsuarios();
+    }
+}
+
+function editarLivro(index) {
+    const livro = livros[index];
+    document.getElementById('livro-nome').value = livro.nome;
+    document.getElementById('livro-autor').value = livro.autor;
+    document.getElementById('livro-ano').value = livro.ano;
+    document.getElementById('livro-genero').value = livro.genero;
+    document.getElementById('livro-codigo').value = livro.codigo;
+    document.getElementById('livro-quantidade').value = livro.quantidade;
+    livros.splice(index, 1);
+    showSection('livro-section');
+}
+
+function excluirLivro(index) {
+    if (confirm('Você tem certeza que deseja excluir este livro?')) {
+        livros.splice(index, 1);
+        atualizarListaLivros();
+    }
+}
+
+// Mostrar a seção inicial (opcional)
+showSection('usuario-section');
