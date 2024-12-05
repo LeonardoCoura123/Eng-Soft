@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>Biblioteca Online</h1>
+    <nav>
+        <div class="button-row">
+            <button onclick="showSection('usuario-section')">Cadastro de Usuário</button>
+            <button onclick="showSection('livro-section')">Cadastro de Livro</button>
+            <button onclick="showSection('emprestimo-section')">Cadastro de Empréstimo</button>
+            <button onclick="showSection('multa-section')">Cadastro de Multa</button>
+        </div>
+        <div class="button-row">
+            <button onclick="showSection('usuarios-lista-section')">Lista de Usuários</button>
+            <button onclick="showSection('livros-lista-section')">Lista de Livros</button>
+            <button onclick="showSection('emprestimos-lista-section')">Lista de Empréstimos</button>
+            <button onclick="showSection('multas-lista-section')">Lista de Multas</button>
+            <button onclick="showSection('relatorios-section')">Relatórios</button>
+        </div>
+    </nav>
+
+    <!-- Seções de Cadastro e Listas -->
+    <section id="usuario-section" class="content-section">
+        <h2>Cadastro de Usuário</h2>
+        <form id="usuario-form">
+            <label for="usuario-nome">Nome:</label>
+            <input type="text" id="usuario-nome" required>
+            <label for="usuario-cpf">CPF:</label>
+            <input type="text" id="usuario-cpf" required>
+            <label for="usuario-email">Email:</label>
+            <input type="email" id="usuario-email" required>
+            <label for="usuario-telefone">Telefone:</label>
+            <input type="tel" id="usuario-telefone" required>
+            <label for="usuario-endereco">Endereço:</label>
+            <input type="text" id="usuario-endereco" required>
+            <label for="usuario-senha">Senha:</label>
+            <input type="password" id="usuario-senha" required>
+            <button type="submit">Cadastrar Usuário</button>
+        </form>
+    </section>
+
+    <section id="livro-section" class="content-section">
+        <h2>Cadastro de Livro</h2>
+        <form id="livro-form">
+            <label for="livro-nome">Nome:</label>
+            <input type="text" id="livro-nome" required>
+            <label for="livro-autor">Autor:</label>
+            <input type="text" id="livro-autor" required>
+            <label for="livro-ano">Ano:</label>
+            <input type="number" id="livro-ano" required>
+            <label for="livro-genero">Gênero:</label>
+            <input type="text" id="livro-genero" required>
+            <label for="livro-codigo">Código:</label>
+            <input type="text" id="livro-codigo" required>
+            <label for="livro-quantidade">Quantidade:</label>
+            <input type="number" id="livro-quantidade" required>
+            <button type="submit">Cadastrar Livro</button>
+        </form>
+    </section>
+
+    <section id="emprestimo-section" class="content-section">
+        <h2>Cadastro de Empréstimo</h2>
+        <form id="emprestimo-form">
+            <label for="emprestimo-id">ID do Empréstimo:</label>
+            <input type="text" id="emprestimo-id" required>
+            <label for="usuario-nome-emprestimo">Nome do Usuário:</label>
+            <input type="text" id="usuario-nome-emprestimo" required>
+            <label for="usuario-cpf-emprestimo">CPF do Usuário:</label>
+            <input type="text" id="usuario-cpf-emprestimo" required>
+            <label for="livro-nome-emprestimo">Nome do Livro:</label>
+            <input type="text" id="livro-nome-emprestimo" required>
+            <label for="data-emprestimo">Data do Empréstimo:</label>
+            <input type="date" id="data-emprestimo" required>
+            <label for="data-devolucao">Data de Devolução Programada:</label>
+            <input type="date" id="data-devolucao" required>
+            <button type="submit">Cadastrar Empréstimo</button>
+        </form>
+    </section>
+
+    <section id="multa-section" class="content-section">
+        <h2>Cadastro de Multa</h2>
+        <form id="multa-form">
+            <label for="multa-id">ID da Multa:</label>
+            <input type="text" id="multa-id" required>
+            <label for="multa-usuario">Nome do Usuário:</label>
+            <input type="text" id="multa-usuario" required>
+            <label for="emprestimo-id-multa">ID do Empréstimo:</label>
+            <input type="text" id="emprestimo-id-multa" required>
+            <label for="valor-multa">Valor da Multa:</label>
+            <input type="number" id="valor-multa" required>
+            <label for="data-multa">Data da Multa:</label>
+            <input type="date" id="data-multa" required>
+            <button type="submit">Cadastrar Multa</button>
+        </form>
+    </section>
+
+    <section id="usuarios-lista-section" class="content-section">
+        <h2>Lista de Usuários</h2>
+        <table id="usuarios-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas de usuários vão aqui -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="livros-lista-section" class="content-section">
+        <h2>Lista de Livros</h2>
+        <table id="livros-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Autor</th>
+                    <th>Ano</th>
+                    <th>Gênero</th>
+                    <th>Código</th>
+                    <th>Quantidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas de livros vão aqui -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="emprestimos-lista-section" class="content-section">
+        <h2>Lista de Empréstimos</h2>
+        <table id="emprestimos-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome do Usuário</th>
+                    <th>CPF do Usuário</th>
+                    <th>Nome do Livro</th>
+                    <th>Data do Empréstimo</th>
+                    <th>Data de Devolução</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas de empréstimos vão aqui -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="multas-lista-section" class="content-section">
+        <h2>Lista de Multas</h2>
+        <table id="multas-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome do Usuário</th>
+                    <th>ID do Empréstimo</th>
+                    <th>Valor da Multa</th>
+                    <th>Data da Multa</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas de multas vão aqui -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Seção de Relatórios -->
+    <section id="relatorios-section" class="content-section blue-background">
+        <h2>Relatórios</h2>
+        <div id="relatorios-filtros">
+            <h3>Filtrar Usuários</h3>
+            <form id="filtro-usuarios-form">
+                <label for="filtro-usuario-nome">Nome:</label>
+                <input type="text" id="filtro-usuario-nome">
+                <label for="filtro-usuario-cpf">CPF:</label>
+                <input type="text" id="filtro-usuario-cpf">
+                <label for="filtro-usuario-email">Email:</label>
+                <input type="email" id="filtro-usuario-email">
+                <label for="filtro-usuario-telefone">Telefone:</label>
+                <input type="tel" id="filtro-usuario-telefone">
+                <button type="button" onclick="filtrarUsuarios()">Filtrar</button>
+            </form>
+
+            <h3>Filtrar Livros</h3>
+            <form id="filtro-livros-form">
+                <label for="filtro-livro-nome">Nome:</label>
+                <input type="text" id="filtro-livro-nome">
+                <label for="filtro-livro-autor">Autor:</label>
+                <input type="text" id="filtro-livro-autor">
+                <label for="filtro-livro-ano">Ano:</label>
+                <input type="number" id="filtro-livro-ano">
+                <label for="filtro-livro-genero">Gênero:</label>
+                <input type="text" id="filtro-livro-genero">
+                <label for="filtro-livro-codigo">Código:</label>
+                <input type="text" id="filtro-livro-codigo">
+                <button type="button" onclick="filtrarLivros()">Filtrar</button>
+            </form>
+
+            <h3>Filtrar Empréstimos</h3>
+            <form id="filtro-emprestimos-form">
+                <label for="filtro-emprestimo-id">ID:</label>
+                <input type="text" id="filtro-emprestimo-id">
+                <label for="filtro-emprestimo-usuario">Nome do Usuário:</label>
+                <input type="text" id="filtro-emprestimo-usuario">
+                <label for="filtro-emprestimo-livro">Nome do Livro:</label>
+                <input type="text" id="filtro-emprestimo-livro">
+                <label for="filtro-emprestimo-data">Data do Empréstimo:</label>
+                <input type="date" id="filtro-emprestimo-data">
+                <label for="filtro-emprestimo-devolucao">Data de Devolução:</label>
+                <input type="date" id="filtro-emprestimo-devolucao">
+                <button type="button" onclick="filtrarEmprestimos()">Filtrar</button>
+            </form>
+
+            <h3>Filtrar Multas</h3>
+            <form id="filtro-multas-form">
+                <label for="filtro-multa-id">ID:</label>
+                <input type="text" id="filtro-multa-id">
+                <label for="filtro-multa-usuario">Nome do Usuário:</label>
+                <input type="text" id="filtro-multa-usuario">
+                <label for="filtro-multa-emprestimo">ID do Empréstimo:</label>
+                <input type="text" id="filtro-multa-emprestimo">
+                <label for="filtro-multa-data">Data da Multa:</label>
+                <input type="date" id="filtro-multa-data">
+                <button type="button" onclick="filtrarMultas()">Filtrar</button>
+            </form>
+
+            <button type="button" onclick="gerarPDF()">Gerar PDF</button>
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
